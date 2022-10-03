@@ -8,8 +8,13 @@ import { VehicleService } from '../vehicle.service';
   styleUrls: ['./form.component.scss']
 })
 export class FormComponent implements OnInit {
-  public sample: any;
-  public model_info = [
+  public model_info: any;
+  public model_data: any;
+  public brand_info: any;
+  public brand_data: any;
+  public vehicle_info: any;
+  public vehicle_data: any;
+  public sample = [
     {
       model_id: 1, model_name: "BMW", model_year: 2000, model_cost: 100000, description: "brand new"
     },
@@ -22,8 +27,19 @@ export class FormComponent implements OnInit {
   ]
   constructor(private service: VehicleService, http: HttpClient) {
     this.service.getAllModel().subscribe((result) => {
-      this.sample = result;
-      console.log(this.sample);
+      this.model_info = result;
+      this.model_data = this.model_info.data;
+      console.log(this.model_data);
+    });
+    this.service.getAllBrand().subscribe((result)=>{
+      this.brand_info = result;
+      this.brand_data = this.brand_info.data;
+      console.log(this.brand_data);
+    });
+    this.service.getAllVehicleName().subscribe((result)=>{
+      this.vehicle_info = result;
+      this.vehicle_data = this.vehicle_info.data;
+      console.log(this.vehicle_data);
     })
   }
 

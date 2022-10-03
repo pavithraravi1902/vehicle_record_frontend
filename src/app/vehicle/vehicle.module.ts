@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ListComponent } from './list/list.component';
 import { FormComponent } from './form/form.component';
 import { ViewComponent } from './view/view.component';
+import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
 
 
 
@@ -11,7 +12,8 @@ import { ViewComponent } from './view/view.component';
   declarations: [
     ListComponent,
     FormComponent,
-    ViewComponent
+    ViewComponent,
+    VehicleListComponent
   ],
   imports: [
     CommonModule

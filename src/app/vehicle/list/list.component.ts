@@ -30,4 +30,12 @@ onEdit(){
 onDelete(){
   this.route.navigate(["vehicle/:id/view"]);
 }
+
+allRecord(){
+  this.route.navigate(["vehicle/show"]);
+}
+
+onCreate(){
+  this.route.navigate(["vehicle/create"]);
+}
 }

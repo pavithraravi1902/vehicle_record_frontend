@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormComponent } from './vehicle/form/form.component';
 import { ListComponent } from './vehicle/list/list.component';
+import { VehicleListComponent } from './vehicle/vehicle-list/vehicle-list.component';
 import { ViewComponent } from './vehicle/view/view.component';
 
 const routes: Routes = [
@@ -25,6 +26,10 @@ const routes: Routes = [
   {
     path: "vehicle/create",
     component: FormComponent
+  },
+  {
+    path: "vehicle/show",
+    component: VehicleListComponent
   }
 ];
 

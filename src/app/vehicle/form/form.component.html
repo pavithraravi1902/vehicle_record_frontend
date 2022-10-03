@@ -2,35 +2,39 @@
 
 Vehicle_Name:
 <select>
-    <option *ngFor="let vehicle of model_info" value="{{vehicle.model_year}}"> {{vehicle.model_year}} </option>
+    <option *ngFor="let elt of vehicle_data" value="{{elt.vehicle_name}}"> {{elt.vehicle_name}} </option>
 </select>
 <br />
 <br />
 Brand_Name:
 <select>
-    <option *ngFor="let vehicle of model_info" value="{{vehicle.model_year}}"> {{vehicle.model_year}} </option>
+    <option *ngFor="let vehicle of brand_data" value="{{vehicle.brand_name}}"> {{vehicle.brand_name}} </option>
 </select>
 <br />
 <br />
 Model_Name:
 <select>
-    <option *ngFor="let vehicle of model_info" value="{{vehicle.model_name}}"> {{vehicle.model_name}} </option>
+    <option *ngFor="let vehicle of model_data" value="{{vehicle.model}}"> {{vehicle.model}} </option>
 </select>
 <br />
 <br />
 Model_Year:
 <select>
-    <option *ngFor="let vehicle of model_info" value="{{vehicle.model_year}}"> {{vehicle.model_year}} </option>
+    <option *ngFor="let vehicle of model_data" value="{{vehicle.year}}"> {{vehicle.year}} </option>
 </select>
 <br />
 <br />
 Model_Cost:
 <select>
-    <option *ngFor="let vehicle of model_info" value="{{vehicle.model_cost}}"> {{vehicle.model_cost}} </option>
+    <option *ngFor="let vehicle of model_data" value="{{vehicle.cost}}"> {{vehicle.cost}} </option>
 </select>
 <br />
 <br />
 Model_Cost:
 <select>
-    <option *ngFor="let vehicle of model_info" value="{{vehicle.description}}"> {{vehicle.description}} </option>
+    <option *ngFor="let vehicle of model_data" value="{{vehicle.description}}"> {{vehicle.description}} </option>
 </select>
+<br />
+<br />
+<button>Cancel</button>
+<button>Submit</button>
