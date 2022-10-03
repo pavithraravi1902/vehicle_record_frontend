@@ -1,7 +1,32 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { FormComponent } from './vehicle/form/form.component';
+import { ListComponent } from './vehicle/list/list.component';
+import { ViewComponent } from './vehicle/view/view.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: "",
+    redirectTo: "vehicle",
+    pathMatch: "full"
+  },
+  {
+    path: "vehicle",
+    component: ListComponent
+  },
+  {
+    path: "vehicle/:id/view",
+    component: ViewComponent
+  },
+  {
+    path: "vehicle/:id/edit",
+    component: FormComponent
+  },
+  {
+    path: "vehicle/create",
+    component: FormComponent
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

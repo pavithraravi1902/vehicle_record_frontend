@@ -1,0 +1,26 @@
+<h1>Vehicle Record</h1>
+
+<table>
+    <thead>
+        <th>Model_ID</th>
+        <th>Model_Name</th>
+        <th>Model_Year</th>
+        <th>Model_Cost</th>
+        <th>Description</th>
+        <th>Action</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let vehicle of model_info">
+            <td>{{vehicle.model_id}}</td>
+            <td>{{vehicle.model_name}}</td>
+            <td>{{vehicle.model_year}}</td>
+            <td>{{vehicle.model_cost}}</td>
+            <td>{{vehicle.description}}</td>
+            <td>
+                <button (click)="onView()">View</button>
+                <button (click)="onEdit()">Edit</button>
+                <button (click)="onDelete()">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
