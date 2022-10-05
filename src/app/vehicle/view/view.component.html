@@ -1,0 +1,24 @@
+<div class="container" style="text-align:center">
+    <p>Customer_ID No: {{ routeParameter }}</p>
+
+    <div *ngFor="let elt of vehicle">
+        <label>Customer_Name</label>: {{ elt.registrar_name }} <br />
+        <label>Mobile_Number</label>: {{ elt.mobile_number }} <br />
+        <label>Vehicle_Name</label>: {{ elt.vehicle_name }} <br />
+        <label>Brand_Name</label>: {{ elt.brand_name }} <br />
+        <label>Model_Name</label>: {{ elt.model_name }} <br />
+        <label>Model_Year</label>: {{ elt.year }} <br />
+        <label>Model_Cost</label>: {{ elt.cost }} <br />
+        <label>Description</label>: {{ elt.description }} <br />
+
+
+        <button (click)="onBack(elt)">
+            Back
+        </button>
+
+    </div>
+    <button (click)="onDelete()">
+        Delete
+    </button>
+
+</div>

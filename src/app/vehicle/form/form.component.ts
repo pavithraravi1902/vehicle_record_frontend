@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { VehicleService } from '../vehicle.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { VehicleService, Vehicle } from '../vehicle.service';
 
 @Component({
   selector: 'app-form',
@@ -14,36 +15,65 @@ export class FormComponent implements OnInit {
   public brand_data: any;
   public vehicle_info: any;
   public vehicle_data: any;
-  public sample = [
-    {
-      model_id: 1, model_name: "BMW", model_year: 2000, model_cost: 100000, description: "brand new"
-    },
-    {
-      model_id: 2, model_name: "Maruti", model_year: 2001, model_cost: 150000, description: "brand new car"
-    },
-    {
-      model_id: 3, model_name: "Suzuki", model_year: 2005, model_cost: 160000, description: "brand new suzuki car"
-    }
-  ]
-  constructor(private service: VehicleService, http: HttpClient) {
+  public registrar_record: any;
+  public vehicle: Vehicle = {} as Vehicle;
+  public registrar_data: any;
+  public routeParameter: number = -1;
+
+  public get RouteParameter(): number {
+    return this.routeParameter;
+  }
+
+  constructor(private service: VehicleService, private http: HttpClient, private router: Router, private route: ActivatedRoute) {
+    this.route.params.subscribe((parameters) => {
+      if (parameters["id"]) {
+        this.routeParameter = Number(parameters["id"]);
+      }
+    });
     this.service.getAllModel().subscribe((result) => {
       this.model_info = result;
       this.model_data = this.model_info.data;
-      console.log(this.model_data);
     });
-    this.service.getAllBrand().subscribe((result)=>{
+    this.service.getAllBrand().subscribe((result) => {
       this.brand_info = result;
       this.brand_data = this.brand_info.data;
-      console.log(this.brand_data);
     });
-    this.service.getAllVehicleName().subscribe((result)=>{
+    this.service.getAllVehicleName().subscribe((result) => {
       this.vehicle_info = result;
       this.vehicle_data = this.vehicle_info.data;
-      console.log(this.vehicle_data);
-    })
+    });
   }
 
   ngOnInit(): void {
+    if (this.routeParameter > 0) {
+      this.service.getRegistrarRecordById(this.routeParameter).subscribe((result) => {
+        this.registrar_record = result;
+        this.vehicle = this.registrar_record.data;
+      });
+    }
   }
 
+  save() {
+    if (this.routeParameter && this.routeParameter > 0) {
+      this.service.updateRecord(this.routeParameter, this.vehicle).subscribe((result) => {
+        console.log(result, "update");
+        confirm("updated successfully");
+        this.router.navigate(["vehicle"]);
+      }, (error) => {
+        console.log(error);
+      })
+    } else {
+      this.service.createRegistrarRecord(this.vehicle).subscribe((result) => {
+        console.log(result, "create");
+        confirm("saved successfully");
+        this.router.navigate(["vehicle"]);
+      }, (error) => {
+        console.log(error);
+      })
+    }
+  }
+
+  onCancel(){
+    this.router.navigate(["vehicle"]);
+  }
 }

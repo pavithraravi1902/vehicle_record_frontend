@@ -1,26 +1,41 @@
 <h1>Vehicle Record</h1>
-<button (click)="allRecord()">Vehicle_Record</button> <button (click)="onCreate()">Registration Form</button>
-<table>
+<button class="btn btn-primary" (click)="allRecord()">Vehicle_Record</button> <button class="btn btn-primary"
+    (click)="onCreate()">Registration Form</button>
+<nav class="navbar">
+    <input class="name col-md-4 my-3" type="text" name="customerName" [(ngModel)]="customerName"
+        (ngModelChange)="search()" placeholder="Search by name" />
+</nav>
+<table style="width: 100%">
     <thead>
-        <th>Model_ID</th>
-        <th>Model_Name</th>
-        <th>Model_Year</th>
-        <th>Model_Cost</th>
-        <th>Description</th>
+        <th (click)="sort('id')">Customer_Id</th>
+        <th (click)="sort('customerName')">Customer_Name</th>
+        <th (click)="sort('mobileNumber')">Mobile_Number</th>
+        <th (click)="sort('vehicleName')">Vehicle_Name</th>
+        <th (click)="sort('brandName')">Brand_Name</th>
+        <th (click)="sort('modelNname')">Model_Name</th>
+        <th (click)="sort('modelYear')">Model_Year</th>
+        <th (click)="sort('modelCost')">Model_Cost</th>
+        <th (click)="sort('desc')">Description</th>
         <th>Action</th>
     </thead>
     <tbody>
-        <tr *ngFor="let vehicle of model_info">
-            <td>{{vehicle.model_id}}</td>
+        <tr style="width: 100%"
+            *ngFor="let vehicle of registrar_info | orderBy: key: reverse | paginate: {itemsPerPage: 5, currentPage: page}">
+            <td>{{vehicle.record_id}}</td>
+            <td>{{vehicle.registrar_name}}</td>
+            <td>{{vehicle.mobile_number}}</td>
+            <td>{{vehicle.vehicle_name}}</td>
+            <td>{{vehicle.brand_name}}</td>
             <td>{{vehicle.model_name}}</td>
-            <td>{{vehicle.model_year}}</td>
-            <td>{{vehicle.model_cost}}</td>
+            <td>{{vehicle.year}}</td>
+            <td>{{vehicle.cost}}</td>
             <td>{{vehicle.description}}</td>
             <td>
-                <button (click)="onView()">View</button>
-                <button (click)="onEdit()">Edit</button>
-                <button (click)="onDelete()">Delete</button>
+                <button class="btn btn-primary" (click)="onView(vehicle)">View</button>
+                <button class="btn btn-primary" (click)="onEdit(vehicle)">Edit</button>
+                <button class="btn btn-primary" (click)="onDelete()">Delete</button>
             </td>
         </tr>
     </tbody>
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
 </table>
