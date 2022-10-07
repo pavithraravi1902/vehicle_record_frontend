@@ -36,7 +36,6 @@ export class VehicleListComponent implements OnInit {
     this.service.getAllModel().subscribe((result) => {
       this.record = result;
       this.model_record = this.record.data;
-      console.log(this.model_record);
     });
   }
 
@@ -45,7 +44,7 @@ export class VehicleListComponent implements OnInit {
       this.ngOnInit();
     } else {
       this.model_record = this.model_record.filter((res: any) => {
-        return res.model.toLocaleLowerCase().match(this.modelName.toLocaleLowerCase());
+        return res.model_name.toLocaleLowerCase().match(this.modelName.toLocaleLowerCase());
       })
     }
   }
