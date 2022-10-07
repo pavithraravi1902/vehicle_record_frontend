@@ -1,6 +1,6 @@
 <div class="col-md-15 offset-md-4" class="p-3 mb-2 bg-light text-dark">
-    {{vehicle | json}}
-<br />
+    {{vehicle.model_name | json}}
+    <br />
     Registrar_Name:
     <input type="text" [(ngModel)]="vehicle.registrar_name" class="form-control-sm" required id="customer_name"
         #name="ngModel" placeholder="Enter your name" />
@@ -19,8 +19,8 @@
     <br />
     <div class="form-group">
         Vehicle_Name:
-        <select required [(ngModel)]="vehicle.vehicle_name" (change)=onSelect($any($event.target).value); class="required"
-            #vname="ngModel">
+        <select required [(ngModel)]="vehicle.vehicle_name" (change)=onSelect($any($event.target).value);
+            class="required" #vname="ngModel">
             <option [ngValue]="null" [disabled]="true">--select vehicle name--</option>
             <option *ngFor="let elt of vehicle_data" required value="{{elt.vehicle_name}}"> {{elt.vehicle_name}}
             </option>
@@ -40,9 +40,10 @@
     <br />
     <div class="form-group">
         Model_Name:
-        <select class="required" [(ngModel)]="vehicle.model_name" #mname="ngModel">
+        <select class="required" [(ngModel)] = "vehicle.model_name" #mname="ngModel">
             <option [ngValue]="null" [disabled]="true">--select model name--</option>
-            <option *ngFor="let vehicle of model_data" required value="{{vehicle.model}}"> {{vehicle.model}} </option>
+            <option *ngFor="let vehicle of model_data" required value="{{vehicle.model_name}}"> {{vehicle.model_name}}
+            </option>
         </select>
     </div>
     <br />

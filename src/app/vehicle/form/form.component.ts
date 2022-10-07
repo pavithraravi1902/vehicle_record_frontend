@@ -37,6 +37,7 @@ export class FormComponent implements OnInit {
     this.service.getAllModel().subscribe((result) => {
       this.model_info = result;
       this.model_data = this.model_info.data;
+      console.log(this.model_data);
     });
     this.service.getAllBrand().subscribe((result) => {
       this.brand_info = result;

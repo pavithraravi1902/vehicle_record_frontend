@@ -8,8 +8,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import { HeaderComponent } from './header/header.component';
 import { RouterModule } from '@angular/router';
-import { LeftMenuComponent } from './left-menu/left-menu.component';
-import { ContainerComponent } from './container/container.component';
 import { ViewModelComponent } from './view-model/view-model.component';
 import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
 
@@ -23,8 +21,6 @@ import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
     ViewComponent,
     VehicleListComponent,
     HeaderComponent,
-    LeftMenuComponent,
-    ContainerComponent,
     ViewModelComponent ],
     
   imports: [
@@ -35,9 +31,7 @@ import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
     RouterModule,
   ], 
   exports: [
-    HeaderComponent,
-    LeftMenuComponent,
-    ContainerComponent
+    HeaderComponent
   ]
 })
 export class VehicleModule { }
