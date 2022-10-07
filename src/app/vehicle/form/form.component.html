@@ -40,10 +40,9 @@
     <br />
     <div class="form-group">
         Model_Name:
-        <select class="required" [(ngModel)] = "vehicle.model_name" #mname="ngModel">
+        <select class="required" [(ngModel)] = "vehicle.model_name" >
             <option [ngValue]="null" [disabled]="true">--select model name--</option>
-            <option *ngFor="let vehicle of model_data" required value="{{vehicle.model_name}}"> {{vehicle.model_name}}
-            </option>
+            <option *ngFor="let vehicle of model_data" required value="{{vehicle.model_name}}"> {{vehicle.model_name}}</option>
         </select>
     </div>
     <br />
