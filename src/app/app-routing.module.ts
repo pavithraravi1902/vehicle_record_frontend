@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormComponent } from './vehicle/form/form.component';
+import { HeaderComponent } from './vehicle/header/header.component';
+import { LeftMenuComponent } from './vehicle/left-menu/left-menu.component';
 import { ListComponent } from './vehicle/list/list.component';
 import { VehicleListComponent } from './vehicle/vehicle-list/vehicle-list.component';
 import { ViewComponent } from './vehicle/view/view.component';

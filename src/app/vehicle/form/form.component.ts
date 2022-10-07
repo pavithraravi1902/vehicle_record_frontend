@@ -19,6 +19,7 @@ export class FormComponent implements OnInit {
   public vehicle: Vehicle = {} as Vehicle;
   public registrar_data: any;
   public routeParameter: number = -1;
+  public brand: any;
 
   public get RouteParameter(): number {
     return this.routeParameter;
@@ -49,8 +50,10 @@ export class FormComponent implements OnInit {
       this.service.getRegistrarRecordById(this.routeParameter).subscribe((result) => {
         this.registrar_record = result;
         this.vehicle = this.registrar_record.data;
+        console.log(this.vehicle);
       });
     }
+    this.onSelect(this.vehicle_data.vehicle_id);
   }
 
   save() {
@@ -73,7 +76,11 @@ export class FormComponent implements OnInit {
     }
   }
 
-  onCancel(){
+  onCancel() {
     this.router.navigate(["vehicle"]);
+  }
+
+  onSelect(id: any) {
+    this.brand = this.brand_info.filter((item: any) => item.vehicle_id == id!.value);
   }
 }

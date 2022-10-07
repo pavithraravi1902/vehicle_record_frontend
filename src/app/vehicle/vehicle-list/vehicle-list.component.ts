@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { VehicleService } from '../vehicle.service';
 
 @Component({
@@ -10,11 +11,24 @@ export class VehicleListComponent implements OnInit {
   public record: any;
   public modelName: any;
   public model_record: any;
+  public brandName: any;
+  public brand_record: any;
+  public vehicleName: any;
+  public vehicle_record: any;
   public page: number = 1;
   public key: string = 'id';
   public reverse: boolean = false;
-  constructor(private service: VehicleService) {
-
+  constructor(private service: VehicleService, private router: Router, private route: ActivatedRoute) {
+    this.service.getAllBrand().subscribe((result) => {
+      this.brandName = result;
+      this.brand_record = this.brandName.data;
+      console.log(this.brand_record);
+    });
+    this.service.getAllVehicleName().subscribe((result) => {
+      this.vehicleName = result;
+      this.vehicle_record = this.vehicleName.data;
+      console.log(this.vehicle_record);
+    });
   }
 
   ngOnInit(): void {
@@ -37,5 +51,12 @@ export class VehicleListComponent implements OnInit {
   sort(key: any) {
     this.key = key;
     this.reverse = !this.reverse;
+  }
+
+  add(){
+    this.router.navigate(["vehicle/create"]);
+  }
+  onEdit() {
+    this.router.navigateByUrl(`vehicle/${this.model_record.record_id}/edit`);
   }
 }

@@ -11,14 +11,12 @@
         <label>Model_Cost</label>: {{ elt.cost }} <br />
         <label>Description</label>: {{ elt.description }} <br />
 
-
-        <button (click)="onBack(elt)">
+        <button class="btn btn-primary" (click)="onBack(elt)">
             Back
         </button>
-
+        <button class="btn btn-primary" (click)="onDelete()">
+            Delete
+        </button>
     </div>
-    <button (click)="onDelete()">
-        Delete
-    </button>
 
 </div>

@@ -15,6 +15,7 @@ export class ListComponent implements OnInit {
   public reverse: boolean = false;
   public page: number = 1
   public routeParameter = -1;
+  public vehicle: Vehicle = {} as Vehicle
   constructor(private route: Router, private router: ActivatedRoute, private service: VehicleService) {
     this.routeParameter = Number(this.router.snapshot.paramMap.get("id"));
   }
@@ -31,8 +32,9 @@ export class ListComponent implements OnInit {
     this.route.navigateByUrl(`vehicle/${vehicle.record_id}/view`);
   }
 
-  onEdit(vehicle: Vehicle) {
-    this.route.navigateByUrl(`vehicle/${vehicle.record_id}/edit`);
+  onEdit(val: Vehicle,) {
+    this.vehicle = val;
+    this.route.navigateByUrl(`vehicle/${val.record_id}/edit`);
   }
 
   allRecord() {
@@ -55,7 +57,8 @@ export class ListComponent implements OnInit {
 
   onDelete(): void {
     confirm("Are you sure to delete this data?");
-    this.service.deleteRecord(this.routeParameter).subscribe(() => {
+    this.service.deleteRecord(this.routeParameter).subscribe((res) => {
+      console.log(res);
       alert("Deleted successfully!");
       this.route.navigate(["vehicle"]);
     }, (error) => {

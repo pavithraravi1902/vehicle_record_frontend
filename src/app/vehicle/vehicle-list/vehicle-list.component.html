@@ -1,24 +1,46 @@
-<h1>vehicle-list</h1>
-<input class="name col-md-4 my-3" type="text" placeholder="Enter model name" [(ngModel)]="modelName"
-    (ngModelChange)="search()" name="modelName" />
+<div class="title">
+    <h1>vehicle-list</h1>
+    <input class="name col-md-4 my-3" type="text" placeholder="Enter model name" [(ngModel)]="modelName"
+        (ngModelChange)="search()" name="modelName" />
+</div>
 <br />
 <br />
-<table>
-    <thead>
-        <th (click)="sort('id')">S. No.</th>
-        <th (click)="sort('modelName')">Model_Name</th>
-        <th (click)="sort('modelYear')">Model_Year</th>
-        <th (click)="sort('modelCost')">Model_cost</th>
-        <th (click)="sort('desc')">Description</th>
-    </thead>
-    <tbody>
-        <tr *ngFor="let elt of model_record | orderBy: key: reverse | paginate: {itemsPerPage: 5, currentPage: page}">
-            <td>{{elt.model_id}}</td>
-            <td>{{elt.model}}</td>
-            <td>{{elt.year}}</td>
-            <td>{{elt.cost}}</td>
-            <td>{{elt.description}}</td>
-        </tr>
-    </tbody>
-    <pagination-controls (pageChange)="page = $event"></pagination-controls>
-</table>
+<div class="pull-right new-btn">
+    <button class="btn btn-primary" (click)="add()">Add data</button>
+</div>
+<colgroup>
+    <col span="2" style="background-color: #D6EEEE">
+</colgroup>
+<div>
+    <table>
+        <thead>
+            <th (click)="sort('id')">S. No.</th>
+            <!-- <th>Vehicle_Name</th>
+            <th>Brand_Name</th> -->
+            <th (click)="sort('modelName')">Model_Name</th>
+            <th (click)="sort('modelYear')">Model_Year</th>
+            <th (click)="sort('modelCost')">Model_cost</th>
+            <th (click)="sort('desc')">Description</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            <tr
+                *ngFor="let elt of model_record | orderBy: key: reverse | paginate: {itemsPerPage: 5, currentPage: page}; let val of brand_record; let itm of vehicle_record">
+               <!-- <td>{{itm.vehicle_name}} </td>
+                <td>{{val.brand_name}}</td>-->
+                <td>{{elt.model_id}}</td>
+                <td>{{elt.model}}</td>
+                <td>{{elt.year}}</td>
+                <td>{{elt.cost}}</td>
+                <td>{{elt.description}}</td>
+                <td>
+                    <div>
+                        <button class="btn btn-primary" (click)="onEdit()">Edit</button>
+                        <button class="btn btn-primary">Delete</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+        <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </table>
+</div>
