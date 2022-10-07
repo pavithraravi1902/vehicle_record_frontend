@@ -5,6 +5,7 @@ import { HeaderComponent } from './vehicle/header/header.component';
 import { LeftMenuComponent } from './vehicle/left-menu/left-menu.component';
 import { ListComponent } from './vehicle/list/list.component';
 import { VehicleListComponent } from './vehicle/vehicle-list/vehicle-list.component';
+import { ViewModelComponent } from './vehicle/view-model/view-model.component';
 import { ViewComponent } from './vehicle/view/view.component';
 
 const routes: Routes = [
@@ -32,6 +33,10 @@ const routes: Routes = [
   {
     path: "vehicle/show",
     component: VehicleListComponent
+  },
+  {
+    path: "vehicle/:id/show",
+    component: ViewModelComponent
   }
 ];
 

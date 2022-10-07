@@ -1,10 +1,12 @@
-<h1>Vehicle Record</h1>
-<button class="btn btn-primary" (click)="allRecord()">Vehicle_Record</button> <button class="btn btn-primary"
-    (click)="onCreate()">Registration Form</button>
+<div class="d-flex justify-content-around py-1">
 <nav class="navbar">
-    <input class="name col-md-4 my-3" type="text" name="customerName" [(ngModel)]="customerName"
+    <input class="form-control mr-sm-2" type="text" name="customerName" [(ngModel)]="customerName"
         (ngModelChange)="search()" placeholder="Search by name" />
 </nav>
+<button class="btn btn-info" (click)="allRecord()">Vehicle_Record</button> 
+<button class="btn btn-info"
+    (click)="onCreate()">Registration Form</button>
+</div>
 <table style="width: 100%">
     <thead>
         <th (click)="sort('id')">Customer_Id</th>
@@ -31,8 +33,8 @@
             <td>{{vehicle.cost}}</td>
             <td>{{vehicle.description}}</td>
             <td>
-                <button class="btn btn-primary" (click)="onView(vehicle)">View</button>
-                <button class="btn btn-primary" (click)="onEdit(vehicle)">Edit</button>
+                <button class="btn btn-info" (click)="onView(vehicle)">View</button>
+                <button class="btn btn-info" (click)="onEdit(vehicle)">Edit</button>
             </td>
         </tr>
     </tbody>

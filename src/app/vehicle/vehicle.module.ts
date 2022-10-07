@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 import { ListComponent } from './list/list.component';
 import { FormComponent } from './form/form.component';
 import { ViewComponent } from './view/view.component';
-import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
 import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import { HeaderComponent } from './header/header.component';
 import { RouterModule } from '@angular/router';
 import { LeftMenuComponent } from './left-menu/left-menu.component';
+import { ContainerComponent } from './container/container.component';
+import { ViewModelComponent } from './view-model/view-model.component';
+import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
 
 
 
@@ -21,7 +23,9 @@ import { LeftMenuComponent } from './left-menu/left-menu.component';
     ViewComponent,
     VehicleListComponent,
     HeaderComponent,
-    LeftMenuComponent ],
+    LeftMenuComponent,
+    ContainerComponent,
+    ViewModelComponent ],
     
   imports: [
     CommonModule,
@@ -32,7 +36,8 @@ import { LeftMenuComponent } from './left-menu/left-menu.component';
   ], 
   exports: [
     HeaderComponent,
-    LeftMenuComponent
+    LeftMenuComponent,
+    ContainerComponent
   ]
 })
 export class VehicleModule { }

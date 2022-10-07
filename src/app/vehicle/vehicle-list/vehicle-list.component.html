@@ -1,16 +1,12 @@
-<div class="title">
-    <h1>vehicle-list</h1>
-    <input class="name col-md-4 my-3" type="text" placeholder="Enter model name" [(ngModel)]="modelName"
-        (ngModelChange)="search()" name="modelName" />
+<div class="d-flex justify-content-around py-1">
+    <nav class="navbar">
+        <input class="form-control mr-sm" type="text" placeholder="Enter model name" [(ngModel)]="modelName"
+            (ngModelChange)="search()" name="modelName" />
+    </nav>
+    <button class="btn btn-info" style="width: 15rem" (click)="add()">Add customer info</button>
 </div>
 <br />
 <br />
-<div class="pull-right new-btn">
-    <button class="btn btn-primary" (click)="add()">Add data</button>
-</div>
-<colgroup>
-    <col span="2" style="background-color: #D6EEEE">
-</colgroup>
 <div>
     <table>
         <thead>
@@ -25,8 +21,8 @@
         </thead>
         <tbody>
             <tr
-                *ngFor="let elt of model_record | orderBy: key: reverse | paginate: {itemsPerPage: 5, currentPage: page}; let val of brand_record; let itm of vehicle_record">
-               <!-- <td>{{itm.vehicle_name}} </td>
+                *ngFor="let elt of model_record | orderBy: key: reverse | paginate: {itemsPerPage: 5, currentPage: page}">
+                <!-- <td>{{itm.vehicle_name}} </td>
                 <td>{{val.brand_name}}</td>-->
                 <td>{{elt.model_id}}</td>
                 <td>{{elt.model}}</td>
@@ -35,8 +31,10 @@
                 <td>{{elt.description}}</td>
                 <td>
                     <div>
-                        <button class="btn btn-primary" (click)="onEdit()">Edit</button>
-                        <button class="btn btn-primary">Delete</button>
+                        <button class="btn btn-info" (click)="onView(elt.model_id)">View</button>
+                        <button class="btn btn-info" (click)="onBack()">
+                            Back
+                        </button>
                     </div>
                 </td>
             </tr>

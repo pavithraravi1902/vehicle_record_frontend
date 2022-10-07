@@ -1,4 +1,4 @@
-<div class="container" style="text-align:center">
+<div class="p-3 mb-2 bg-secondary text-white"  style="text-align:center">
     <p>Customer_ID No: {{ routeParameter }}</p>
 
     <div *ngFor="let elt of vehicle">
@@ -11,12 +11,18 @@
         <label>Model_Cost</label>: {{ elt.cost }} <br />
         <label>Description</label>: {{ elt.description }} <br />
 
-        <button class="btn btn-primary" (click)="onBack(elt)">
+        <button class="btn btn-info" (click)="onBack()">
             Back
         </button>
-        <button class="btn btn-primary" (click)="onDelete()">
+        <button class="btn btn-info" (click)="onDelete()">
             Delete
         </button>
+
+
+
+
+
+
     </div>
 
 </div>

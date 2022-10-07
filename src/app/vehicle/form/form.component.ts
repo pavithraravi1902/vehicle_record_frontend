@@ -20,12 +20,15 @@ export class FormComponent implements OnInit {
   public registrar_data: any;
   public routeParameter: number = -1;
   public brand: any;
+  public result: any;
+  public vehicleRecord: any;
 
   public get RouteParameter(): number {
     return this.routeParameter;
   }
 
   constructor(private service: VehicleService, private http: HttpClient, private router: Router, private route: ActivatedRoute) {
+    
     this.route.params.subscribe((parameters) => {
       if (parameters["id"]) {
         this.routeParameter = Number(parameters["id"]);
@@ -38,22 +41,26 @@ export class FormComponent implements OnInit {
     this.service.getAllBrand().subscribe((result) => {
       this.brand_info = result;
       this.brand_data = this.brand_info.data;
+      //console.log( this.brand_data, "pavi");
     });
     this.service.getAllVehicleName().subscribe((result) => {
       this.vehicle_info = result;
       this.vehicle_data = this.vehicle_info.data;
+      this.onSelect(this.vehicle_data.vehicle_id);
+      //console.log(this.vehicle_data)
     });
+    //this.vehicle = this.registrar_record.data;
   }
 
   ngOnInit(): void {
     if (this.routeParameter > 0) {
       this.service.getRegistrarRecordById(this.routeParameter).subscribe((result) => {
         this.registrar_record = result;
-        this.vehicle = this.registrar_record.data;
+        this.vehicleRecord = this.registrar_record.data;
+        this.vehicle = this.vehicleRecord[0];
         console.log(this.vehicle);
       });
     }
-    this.onSelect(this.vehicle_data.vehicle_id);
   }
 
   save() {
@@ -81,6 +88,7 @@ export class FormComponent implements OnInit {
   }
 
   onSelect(id: any) {
-    this.brand = this.brand_info.filter((item: any) => item.vehicle_id == id!.value);
+   this.result = this.brand_data.filter((item: any) => item.vehicle_id == id);
+    //console.log(this.result, "pavi");
   }
 }

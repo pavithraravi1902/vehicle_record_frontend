@@ -22,16 +22,18 @@ export class ViewComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  onBack(id: number) {
+  onBack() {
     this.router.navigateByUrl("/vehicle");
   }
   onDelete(): void {
-    confirm("Are you sure to delete this data?");
-    this.service.deleteRecord(this.routeParameter).subscribe(() => {
-      alert("Deleted successfully!");
-      this.router.navigate(["vehicle"]);
-    }, (error) => {
-      console.log("Error: ", error);
-    });
+    var result = confirm("Are you sure to delete this data?");
+    if (result == true) {
+      this.service.deleteRecord(this.routeParameter).subscribe(() => {
+        alert("Deleted successfully!");
+        this.router.navigate(["vehicle"]);
+      }, (error) => {
+        console.log("Error: ", error);
+      });
+    }
   }
 }

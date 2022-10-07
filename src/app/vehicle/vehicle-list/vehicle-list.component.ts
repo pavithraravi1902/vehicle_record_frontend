@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
-import { VehicleService } from '../vehicle.service';
+import { VehicleService, Model } from '../vehicle.service';
 
 @Component({
   selector: 'app-vehicle-list',
@@ -10,6 +10,7 @@ import { VehicleService } from '../vehicle.service';
 export class VehicleListComponent implements OnInit {
   public record: any;
   public modelName: any;
+  public model: Model = {} as Model;
   public model_record: any;
   public brandName: any;
   public brand_record: any;
@@ -35,6 +36,7 @@ export class VehicleListComponent implements OnInit {
     this.service.getAllModel().subscribe((result) => {
       this.record = result;
       this.model_record = this.record.data;
+      console.log(this.model_record);
     });
   }
 
@@ -53,10 +55,13 @@ export class VehicleListComponent implements OnInit {
     this.reverse = !this.reverse;
   }
 
-  add(){
+  add() {
     this.router.navigate(["vehicle/create"]);
   }
-  onEdit() {
-    this.router.navigateByUrl(`vehicle/${this.model_record.record_id}/edit`);
+  onView(id: any) {
+    this.router.navigateByUrl(`vehicle/${id}/show`);
+  }
+  onBack(){
+    this.router.navigateByUrl(`vehicle`);
   }
 }

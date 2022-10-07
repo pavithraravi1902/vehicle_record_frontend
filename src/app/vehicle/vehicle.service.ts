@@ -14,6 +14,13 @@ export type Vehicle = {
   description: string
 }
 
+export type Model ={
+  brand_name: string,
+  model_name: string,
+  year: number,
+  cost: number,
+  description: string
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -27,6 +34,9 @@ export class VehicleService {
 
   public getAllModel() {
     return this.http.get(`${this.apiModelUrl}`);
+  }
+  public getModelById(id: number) {
+    return this.http.get(`${this.apiModelUrl}/${id}`);
   }
   public getAllBrand() {
     return this.http.get(`${this.apiBrandUrl}`);
