@@ -22,7 +22,7 @@
         <select required [(ngModel)]="vehicle.vehicleName" (change)=onSelect($any($event.target).value);
             class="required" #vname="ngModel">
             <option [ngValue]="null" [disabled]="true">--select vehicle name--</option>
-            <option *ngFor="let elt of vehicleData" required value="{{elt.vehicleName}}"> {{elt.vehicleName}}
+            <option *ngFor="let elt of vehicleData" required value="{{elt.vehicleId}}"> {{elt.vehicleName}}
             </option>
         </select>
     </div>
@@ -32,7 +32,7 @@
         Brand_Name:
         <select class="required" [(ngModel)]="vehicle.brandName" #bname="ngModel">
             <option [ngValue]="null" [disabled]="true">--select brand name--</option>
-            <option *ngFor="let vehicle of brandData" required value="{{vehicle.brandName}}"> {{vehicle.brandName}}
+            <option *ngFor="let vehicle of brandData" required value="{{vehicle.brandId}}"> {{vehicle.brandName}}
             </option>
         </select>
     </div>

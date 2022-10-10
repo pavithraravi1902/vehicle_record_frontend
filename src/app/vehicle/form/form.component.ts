@@ -36,21 +36,16 @@ export class FormComponent implements OnInit {
     this.service.getAllModel().subscribe((result) => {
       this.modelInfo = result;
       this.modelData = this.modelInfo.data;
-      console.log(this.modelData);
     });
     this.service.getAllBrand().subscribe((result) => {
       this.brandInfo = result;
       this.brandData = this.brandInfo.data;
-      console.log(this.brandData, "pavi");
     });
     this.service.getAllVehicleName().subscribe((result) => {
       this.vehicleInfo = result;
       this.vehicleData = this.vehicleInfo.data;
-      this.onSelect(this.vehicleData.vehicleId);
-      console.log(this.vehicleData)
-      this.onSelect(this.vehicleData.vehicleId);
+      console.log(this.vehicleData);
     });
-    //this.vehicle = this.registrar_record.data;
   }
 
   ngOnInit(): void {
@@ -59,10 +54,9 @@ export class FormComponent implements OnInit {
         this.registrarRecord = result;
         this.vehicleRecord = this.registrarRecord.data;
         this.vehicle = this.vehicleRecord[0];
-        console.log(this.vehicle);
       });
     }
-    this.onSelect(this.brandData.brandId);
+    this.onSelect(this.vehicleData.vehicleId);
   }
 
   onSave() {
@@ -90,7 +84,8 @@ export class FormComponent implements OnInit {
   }
 
   onSelect(id: any) {
-    this.result = this.modelData.filter((item: any) => item.brandId == id);
-    console.log(this.result, "result");
+    console.log(id);
+    this.brandData = this.brandData.filter((item: any) => item.vehicleId == id);
+    console.log(this.brandData, "result");
   }
 }
