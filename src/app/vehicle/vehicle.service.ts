@@ -1,22 +1,21 @@
 import { Injectable } from '@angular/core';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 export type Vehicle = {
-  record_id: number,
-  registrar_name: string,
-  mobile_number: string,
-  vehicle_name: string,
-  brand_name: string,
-  model_name: string,
+  recordId: number,
+  registrarName: string,
+  mobileNumber: string,
+  vehicleName: string,
+  brandName: string,
+  modelName: string,
   year: number,
   cost: number,
   description: string
 }
 
-export type Model ={
-  brand_name: string,
-  model_name: string,
+export type Model = {
+  brandName: string,
+  modelName: string,
   year: number,
   cost: number,
   description: string
@@ -25,13 +24,12 @@ export type Model ={
   providedIn: 'root'
 })
 export class VehicleService {
-
+  public baseUrl = "http://localhost:8000/";
+  public apiModelUrl = this.baseUrl + "model";
+  public apiBrandUrl = this.baseUrl + "brand";
+  public apiNameUrl = this.baseUrl + "vehicle";
+  public apiRegistrarUrl = this.baseUrl + "record";
   constructor(private http: HttpClient) { }
-  apiModelUrl = "http://localhost:8000/model";
-  apiBrandUrl = "http://localhost:8000/brand";
-  apiNameUrl = "http://localhost:8000/vehicle";
-  apiRegistrarUrl = "http://localhost:8000/record";
-
   public getAllModel() {
     return this.http.get(`${this.apiModelUrl}`);
   }

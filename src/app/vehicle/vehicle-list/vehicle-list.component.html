@@ -1,37 +1,33 @@
 <div class="d-flex justify-content-around py-1">
     <nav class="navbar">
-        <input class="form-control mr-sm" type="text" placeholder="Enter model name" [(ngModel)]="modelName"
-            (ngModelChange)="search()" name="modelName" />
+        <input class="form-control mr-sm" type="text" placeholder="Enter model name" [(ngModel)]="modelData"
+            (ngModelChange)="onSearch()" name="modelName" />
     </nav>
-    <button class="btn btn-info" style="width: 15rem" (click)="add()">Add customer info</button>
+    <button class="btn btn-info" style="width: 15rem" (click)="onAdd()">Add customer info</button>
 </div>
 <br />
 <br />
 <div>
     <table>
         <thead>
-            <th (click)="sort('id')">S. No.</th>
-            <!-- <th>Vehicle_Name</th>
-            <th>Brand_Name</th> -->
-            <th (click)="sort('modelName')">Model_Name</th>
-            <th (click)="sort('modelYear')">Model_Year</th>
-            <th (click)="sort('modelCost')">Model_cost</th>
-            <th (click)="sort('desc')">Description</th>
+            <th (click)="onSort('id')">S. No.</th>
+            <th (click)="onSort('modelData')">Model Name</th>
+            <th (click)="onSort('modelYear')">Model Year</th>
+            <th (click)="onSort('modelCost')">Model cost</th>
+            <th (click)="onSort('desc')">Description</th>
             <th>Action</th>
         </thead>
         <tbody>
             <tr
-                *ngFor="let elt of model_record | orderBy: key: reverse | paginate: {itemsPerPage: 5, currentPage: page}">
-                <!-- <td>{{itm.vehicle_name}} </td>
-                <td>{{val.brand_name}}</td>-->
-                <td>{{elt.model_id}}</td>
-                <td>{{elt.model_name}}</td>
+                *ngFor="let elt of modelRecord | orderBy: key: reverse | paginate: {itemsPerPage: 5, currentPage: page}">
+                <td>{{elt.modelId}}</td>
+                <td>{{elt.modelName}}</td>
                 <td>{{elt.year}}</td>
                 <td>{{elt.cost}}</td>
                 <td>{{elt.description}}</td>
                 <td>
                     <div>
-                        <button class="btn btn-info" (click)="onView(elt.model_id)">View</button>
+                        <button class="btn btn-info" (click)="onView(elt.modelId)">View</button>
                         <button class="btn btn-info" (click)="onBack()">
                             Back
                         </button>

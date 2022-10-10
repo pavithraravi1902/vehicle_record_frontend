@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { VehicleService, Model } from '../vehicle.service';
 
 @Component({
@@ -9,52 +9,52 @@ import { VehicleService, Model } from '../vehicle.service';
 })
 export class VehicleListComponent implements OnInit {
   public record: any;
-  public modelName: any;
+  public modelData: any;
   public model: Model = {} as Model;
-  public model_record: any;
+  public modelRecord: any;
   public brandName: any;
-  public brand_record: any;
+  public brandRecord: any;
   public vehicleName: any;
-  public vehicle_record: any;
+  public vehicleRecord: any;
   public page: number = 1;
   public key: string = 'id';
   public reverse: boolean = false;
-  constructor(private service: VehicleService, private router: Router, private route: ActivatedRoute) {
+  constructor(private service: VehicleService, private router: Router) {
     this.service.getAllBrand().subscribe((result) => {
       this.brandName = result;
-      this.brand_record = this.brandName.data;
-      console.log(this.brand_record);
+      this.brandRecord = this.brandName.data;
+      console.log(this.brandRecord);
     });
     this.service.getAllVehicleName().subscribe((result) => {
       this.vehicleName = result;
-      this.vehicle_record = this.vehicleName.data;
-      console.log(this.vehicle_record);
+      this.vehicleRecord = this.vehicleName.data;
+      console.log(this.vehicleRecord);
     });
   }
 
   ngOnInit(): void {
     this.service.getAllModel().subscribe((result) => {
       this.record = result;
-      this.model_record = this.record.data;
+      this.modelRecord = this.record.data;
     });
   }
 
-  search() {
-    if (this.modelName == "") {
+  onSearch() {
+    if (this.modelData == "") {
       this.ngOnInit();
     } else {
-      this.model_record = this.model_record.filter((res: any) => {
-        return res.model_name.toLocaleLowerCase().match(this.modelName.toLocaleLowerCase());
+      this.modelRecord = this.modelRecord.filter((res: any) => {
+        return res.model_name.toLocaleLowerCase().match(this.modelData.toLocaleLowerCase());
       })
     }
   }
 
-  sort(key: any) {
+  onSort(key: any) {
     this.key = key;
     this.reverse = !this.reverse;
   }
 
-  add() {
+  onAdd() {
     this.router.navigate(["vehicle/create"]);
   }
   onView(id: any) {

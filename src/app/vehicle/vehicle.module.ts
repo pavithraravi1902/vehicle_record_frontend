@@ -6,7 +6,7 @@ import { ViewComponent } from './view/view.component';
 import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2OrderModule } from 'ng2-order-pipe';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent } from '../layout/header/header.component';
 import { RouterModule } from '@angular/router';
 import { ViewModelComponent } from './view-model/view-model.component';
 import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
@@ -21,15 +21,15 @@ import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
     ViewComponent,
     VehicleListComponent,
     HeaderComponent,
-    ViewModelComponent ],
-    
+    ViewModelComponent],
+
   imports: [
     CommonModule,
     FormsModule,
     NgxPaginationModule,
     Ng2OrderModule,
     RouterModule,
-  ], 
+  ],
   exports: [
     HeaderComponent
   ]

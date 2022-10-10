@@ -1,8 +1,8 @@
 <div class="col-md-15 offset-md-4" class="p-3 mb-2 bg-light text-dark">
-    {{vehicle.model_name | json}}
+    {{vehicle.modelName | json}}
     <br />
     Registrar_Name:
-    <input type="text" [(ngModel)]="vehicle.registrar_name" class="form-control-sm" required id="customer_name"
+    <input type="text" [(ngModel)]="vehicle.registrarName" class="form-control-sm" required id="customer_name"
         #name="ngModel" placeholder="Enter your name" />
     <div *ngIf="name.invalid && name.touched">
         Enter Your Name.
@@ -10,7 +10,7 @@
     <br />
     <br />
     Mobile_Number:
-    <input type="text" [(ngModel)]="vehicle.mobile_number" class="form-control-sm" required id=mob_no #num="ngModel"
+    <input type="text" [(ngModel)]="vehicle.mobileNumber" class="form-control-sm" required id=mob_no #num="ngModel"
         placeholder="Enter your mobile number" />
     <div *ngIf="num.invalid && num.touched">
         Enter Your Mobile Number.
@@ -19,10 +19,10 @@
     <br />
     <div class="form-group">
         Vehicle_Name:
-        <select required [(ngModel)]="vehicle.vehicle_name" (change)=onSelect($any($event.target).value);
+        <select required [(ngModel)]="vehicle.vehicleName" (change)=onSelect($any($event.target).value);
             class="required" #vname="ngModel">
             <option [ngValue]="null" [disabled]="true">--select vehicle name--</option>
-            <option *ngFor="let elt of vehicle_data" required value="{{elt.vehicle_name}}"> {{elt.vehicle_name}}
+            <option *ngFor="let elt of vehicleData" required value="{{elt.vehicleName}}"> {{elt.vehicleName}}
             </option>
         </select>
     </div>
@@ -30,9 +30,9 @@
     <br />
     <div class="form-group">
         Brand_Name:
-        <select class="required" [(ngModel)]="vehicle.brand_name" #bname="ngModel">
+        <select class="required" [(ngModel)]="vehicle.brandName" #bname="ngModel">
             <option [ngValue]="null" [disabled]="true">--select brand name--</option>
-            <option *ngFor="let vehicle of brand_data" required value="{{vehicle.brand_name}}"> {{vehicle.brand_name}}
+            <option *ngFor="let vehicle of brandData" required value="{{vehicle.brandName}}"> {{vehicle.brandName}}
             </option>
         </select>
     </div>
@@ -40,9 +40,10 @@
     <br />
     <div class="form-group">
         Model_Name:
-        <select class="required" [(ngModel)] = "vehicle.model_name" >
+        <select class="required" [(ngModel)]="vehicle.modelName">
             <option [ngValue]="null" [disabled]="true">--select model name--</option>
-            <option *ngFor="let vehicle of model_data" required value="{{vehicle.model_name}}"> {{vehicle.model_name}}</option>
+            <option *ngFor="let vehicle of modelData" required value="{{vehicle.modelName}}"> {{vehicle.modelName}}
+            </option>
         </select>
     </div>
     <br />
@@ -51,7 +52,7 @@
         Model_Year:
         <select class="required" [(ngModel)]="vehicle.year" #yr="ngModel">
             <option [ngValue]="null" [disabled]="true">--select model year--</option>
-            <option *ngFor="let vehicle of model_data" required value="{{vehicle.year}}"> {{vehicle.year}} </option>
+            <option *ngFor="let vehicle of modelData" required value="{{vehicle.year}}"> {{vehicle.year}} </option>
         </select>
     </div>
     <br />
@@ -60,7 +61,7 @@
         Model_Cost:
         <select class="required" [(ngModel)]="vehicle.cost" #cost="ngModel">
             <option [ngValue]="null" [disabled]="true">--select model cost--</option>
-            <option *ngFor="let vehicle of model_data" required value="{{vehicle.cost}}"> {{vehicle.cost}} </option>
+            <option *ngFor="let vehicle of modelData" required value="{{vehicle.cost}}"> {{vehicle.cost}} </option>
         </select>
     </div>
     <br />
@@ -69,12 +70,12 @@
         Model_Description:
         <select class="required" [(ngModel)]="vehicle.description" #desc="ngModel">
             <option [ngValue]="null" [disabled]="true">--select model desc--</option>
-            <option *ngFor="let vehicle of model_data" required value="{{vehicle.description}}"> {{vehicle.description}}
+            <option *ngFor="let vehicle of modelData" required value="{{vehicle.description}}"> {{vehicle.description}}
             </option>
         </select>
     </div>
     <br />
     <br />
     <button class="btn btn-info" (click)="onCancel()">Cancel</button>
-    <button class="btn btn-info" (click)="save()">{{routeParameter > 0? 'Update' : 'Create' }}</button>
+    <button class="btn btn-info" (click)="onSave()">{{routeParameter > 0? 'Update' : 'Create' }}</button>
 </div>

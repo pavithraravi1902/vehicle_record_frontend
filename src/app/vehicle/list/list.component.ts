@@ -8,8 +8,8 @@ import { VehicleService, Vehicle } from '../vehicle.service';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  public registrar_data: any;
-  public registrar_info: Array<Vehicle> = [];
+  public registrarData: any;
+  public registrarInfo: Array<Vehicle> = [];
   public customerName: any
   public key: any = 'id';
   public reverse: boolean = false;
@@ -22,19 +22,19 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.getRegistrarRecord().subscribe((result) => {
-      this.registrar_data = result;
-      this.registrar_info = this.registrar_data.data;
-      console.log(this.registrar_info);
+      this.registrarData = result;
+      this.registrarInfo = this.registrarData.data;
+      console.log(this.registrarInfo);
     })
   }
 
   onView(vehicle: Vehicle) {
-    this.route.navigateByUrl(`vehicle/${vehicle.record_id}/view`);
+    this.route.navigateByUrl(`vehicle/${vehicle.recordId}/view`);
   }
 
   onEdit(val: Vehicle,) {
     this.vehicle = val;
-    this.route.navigateByUrl(`vehicle/${val.record_id}/edit`);
+    this.route.navigateByUrl(`vehicle/${val.recordId}/edit`);
   }
 
   allRecord() {
@@ -45,12 +45,12 @@ export class ListComponent implements OnInit {
     this.route.navigate(["vehicle/create"]);
   }
 
-  search() {
+  onSearch() {
     if (this.customerName == "") {
       return this.ngOnInit();
     } else {
-      this.registrar_info = this.registrar_info.filter(res => {
-        return res.registrar_name.toLocaleLowerCase().match(this.customerName.toLocaleLowerCase());
+      this.registrarInfo = this.registrarInfo.filter(res => {
+        return res.registrarName.toLocaleLowerCase().match(this.customerName.toLocaleLowerCase());
       })
     }
   }
@@ -66,7 +66,7 @@ export class ListComponent implements OnInit {
     });
   }
 
-  sort(key: any) {
+  onSort(key: any) {
     this.key = key;
     this.reverse = !this.reverse;
   }

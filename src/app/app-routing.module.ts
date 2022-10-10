@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormComponent } from './vehicle/form/form.component';
-import { HeaderComponent } from './vehicle/header/header.component';
+import { HeaderComponent } from './layout/header/header.component';
 import { ListComponent } from './vehicle/list/list.component';
 import { VehicleListComponent } from './vehicle/vehicle-list/vehicle-list.component';
 import { ViewModelComponent } from './vehicle/view-model/view-model.component';

@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-around py-1">
 <nav class="navbar">
     <input class="form-control mr-sm-2" type="text" name="customerName" [(ngModel)]="customerName"
-        (ngModelChange)="search()" placeholder="Search by name" />
+        (ngModelChange)="onSearch()" placeholder="Search by name" />
 </nav>
 <button class="btn btn-info" (click)="allRecord()">Vehicle_Record</button> 
 <button class="btn btn-info"
@@ -9,26 +9,26 @@
 </div>
 <table style="width: 100%">
     <thead>
-        <th (click)="sort('id')">Customer_Id</th>
-        <th (click)="sort('customerName')">Customer_Name</th>
-        <th (click)="sort('mobileNumber')">Mobile_Number</th>
-        <th (click)="sort('vehicleName')">Vehicle_Name</th>
-        <th (click)="sort('brandName')">Brand_Name</th>
-        <th (click)="sort('modelNname')">Model_Name</th>
-        <th (click)="sort('modelYear')">Model_Year</th>
-        <th (click)="sort('modelCost')">Model_Cost</th>
-        <th (click)="sort('desc')">Description</th>
+        <th (click)="onSort('id')">Customer Id</th>
+        <th (click)="onSort('customerName')">Customer Name</th>
+        <th (click)="onSort('mobileNumber')">Mobile Number</th>
+        <th (click)="onSort('vehicleName')">Vehicle Name</th>
+        <th (click)="onSort('brandName')">Brand Name</th>
+        <th (click)="onSort('modelNname')">Model Name</th>
+        <th (click)="onSort('modelYear')">Model Year</th>
+        <th (click)="onSort('modelCost')">Model Cost</th>
+        <th (click)="onSort('desc')">Description</th>
         <th>Action</th>
     </thead>
     <tbody>
         <tr style="width: 100%"
-            *ngFor="let vehicle of registrar_info | orderBy: key: reverse | paginate: {itemsPerPage: 5, currentPage: page}">
-            <td>{{vehicle.record_id}}</td>
-            <td>{{vehicle.registrar_name}}</td>
-            <td>{{vehicle.mobile_number}}</td>
-            <td>{{vehicle.vehicle_name}}</td>
-            <td>{{vehicle.brand_name}}</td>
-            <td>{{vehicle.model_name}}</td>
+            *ngFor="let vehicle of registrarInfo | orderBy: key: reverse | paginate: {itemsPerPage: 5, currentPage: page}">
+            <td>{{vehicle.recordId}}</td>
+            <td>{{vehicle.registrarName}}</td>
+            <td>{{vehicle.mobileNumber}}</td>
+            <td>{{vehicle.vehicleName}}</td>
+            <td>{{vehicle.brandName}}</td>
+            <td>{{vehicle.modelName}}</td>
             <td>{{vehicle.year}}</td>
             <td>{{vehicle.cost}}</td>
             <td>{{vehicle.description}}</td>
