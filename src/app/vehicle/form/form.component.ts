@@ -36,7 +36,7 @@ export class FormComponent implements OnInit {
     this.service.getAllModel().subscribe((result) => {
       this.modelInfo = result;
       this.modelData = this.modelInfo.data;
-      //console.log(this.model_data);
+      console.log(this.modelData);
     });
     this.service.getAllBrand().subscribe((result) => {
       this.brandInfo = result;
@@ -46,9 +46,9 @@ export class FormComponent implements OnInit {
     this.service.getAllVehicleName().subscribe((result) => {
       this.vehicleInfo = result;
       this.vehicleData = this.vehicleInfo.data;
-      this.onSelect(this.vehicleData.vehicle_id);
+      this.onSelect(this.vehicleData.vehicleId);
       console.log(this.vehicleData)
-      this.onSelect(this.vehicleData.vehicle_id);
+      this.onSelect(this.vehicleData.vehicleId);
     });
     //this.vehicle = this.registrar_record.data;
   }
@@ -62,7 +62,7 @@ export class FormComponent implements OnInit {
         console.log(this.vehicle);
       });
     }
-    this.onSelect(this.brandData.brand_id);
+    this.onSelect(this.brandData.brandId);
   }
 
   onSave() {
@@ -90,7 +90,7 @@ export class FormComponent implements OnInit {
   }
 
   onSelect(id: any) {
-    this.result = this.modelData.filter((item: any) => item.brand_id == id);
+    this.result = this.modelData.filter((item: any) => item.brandId == id);
     console.log(this.result, "result");
   }
 }

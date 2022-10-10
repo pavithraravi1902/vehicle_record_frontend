@@ -44,7 +44,7 @@ export class VehicleListComponent implements OnInit {
       this.ngOnInit();
     } else {
       this.modelRecord = this.modelRecord.filter((res: any) => {
-        return res.model_name.toLocaleLowerCase().match(this.modelData.toLocaleLowerCase());
+        return res.modelName.toLocaleLowerCase().match(this.modelData.toLocaleLowerCase());
       })
     }
   }

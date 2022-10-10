@@ -1,28 +1,28 @@
-<div class="p-3 mb-2 bg-secondary text-white"  style="text-align:center">
-    <p>Customer_ID No: {{ routeParameter }}</p>
+<div class="p-3 mb-2 bg-secondary text-white" style="text-align:center">
+    <p>Customer ID : {{ routeParameter }}</p>
 
     <div *ngFor="let elt of vehicle">
-        <label>Customer_Name</label>: {{ elt.registrar_name }} <br />
-        <label>Mobile_Number</label>: {{ elt.mobile_number }} <br />
-        <label>Vehicle_Name</label>: {{ elt.vehicle_name }} <br />
-        <label>Brand_Name</label>: {{ elt.brand_name }} <br />
-        <label>Model_Name</label>: {{ elt.model_name }} <br />
-        <label>Model_Year</label>: {{ elt.year }} <br />
-        <label>Model_Cost</label>: {{ elt.cost }} <br />
-        <label>Description</label>: {{ elt.description }} <br />
-
+        <label>Customer Name</label>: {{ elt.registrarName }}
+        <br />
+        <label>Mobile Number</label>: {{ elt.mobileNumber }}
+        <br />
+        <label>Vehicle Name</label>: {{ elt.vehicleName }}
+        <br />
+        <label>Brand Name</label>: {{ elt.brandName }}
+        <br />
+        <label>Model Name</label>: {{ elt.modelName }}
+        <br />
+        <label>Model Year</label>: {{ elt.year }}
+        <br />
+        <label>Model Cost</label>: {{ elt.cost }}
+        <br />
+        <label>Description</label>: {{ elt.description }}
+        <br />
         <button class="btn btn-info" (click)="onBack()">
             Back
         </button>
         <button class="btn btn-info" (click)="onDelete()">
             Delete
         </button>
-
-
-
-
-
-
     </div>
-
 </div>
