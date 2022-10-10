@@ -25,10 +25,10 @@ export type Model = {
 })
 export class VehicleService {
   public baseUrl ="http://localhost:8000/";
-  public apiModelUrl = "http://localhost:8000/model";
-  public apiBrandUrl = "http://localhost:8000/brand";
-  public apiNameUrl = "http://localhost:8000/vehicle";
-  public apiRegistrarUrl = "http://localhost:8000/record";
+  public apiModelUrl = this.baseUrl + "model";
+  public apiBrandUrl = this.baseUrl + "brand";
+  public apiNameUrl = this.baseUrl + "vehicle";
+  public apiRegistrarUrl = this.baseUrl + "record";
   constructor(private http: HttpClient) { }
   public getAllModel() {
     return this.http.get(`${this.apiModelUrl}`);

@@ -44,7 +44,7 @@ export class FormComponent implements OnInit {
     this.service.getAllVehicleName().subscribe((result) => {
       this.vehicleInfo = result;
       this.vehicleData = this.vehicleInfo.data;
-      console.log(this.vehicleData);
+      //console.log(this.vehicleData);
     });
   }
 
@@ -57,6 +57,7 @@ export class FormComponent implements OnInit {
       });
     }
     this.onSelect(this.vehicleData.vehicleId);
+    this.onChoose(this.brandData.brandId);
   }
 
   onSave() {
@@ -84,8 +85,12 @@ export class FormComponent implements OnInit {
   }
 
   onSelect(id: any) {
-    console.log(id);
     this.brandData = this.brandData.filter((item: any) => item.vehicleId == id);
-    console.log(this.brandData, "result");
+    //console.log(this.brandData, "result");
+  }
+
+  onChoose(id: any) {
+    this.modelData = this.modelData.filter((item: any) => item.brandId == id);
+    //console.log(this.modelData)
   }
 }

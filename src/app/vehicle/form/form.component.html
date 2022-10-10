@@ -30,7 +30,7 @@
     <br />
     <div class="form-group">
         Brand_Name:
-        <select class="required" [(ngModel)]="vehicle.brandName" #bname="ngModel">
+        <select class="required" (change)=onChoose($any($event.target).value) [(ngModel)]="vehicle.brandName" #bname="ngModel">
             <option [ngValue]="null" [disabled]="true">--select brand name--</option>
             <option *ngFor="let vehicle of brandData" required value="{{vehicle.brandId}}"> {{vehicle.brandName}}
             </option>
@@ -42,7 +42,7 @@
         Model_Name:
         <select class="required" [(ngModel)]="vehicle.modelName">
             <option [ngValue]="null" [disabled]="true">--select model name--</option>
-            <option *ngFor="let vehicle of modelData" required value="{{vehicle.modelName}}"> {{vehicle.modelName}}
+            <option *ngFor="let vehicle of modelData" required value="{{vehicle.modelId}}"> {{vehicle.modelName}}
             </option>
         </select>
     </div>
