@@ -85,12 +85,13 @@ export class FormComponent implements OnInit {
   }
 
   onSelect(id: any) {
+    console.log(id);
     this.brandData = this.brandData.filter((item: any) => item.vehicleId == id);
-    //console.log(this.brandData, "result");
+    console.log(this.brandData, "result");
   }
 
   onChoose(id: any) {
     this.modelData = this.modelData.filter((item: any) => item.brandId == id);
-    //console.log(this.modelData)
+    console.log(this.modelData, "result");
   }
 }
