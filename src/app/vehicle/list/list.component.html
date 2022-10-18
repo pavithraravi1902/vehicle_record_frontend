@@ -1,11 +1,10 @@
 <div class="d-flex justify-content-around py-1">
-<nav class="navbar">
-    <input class="form-control mr-sm-2" type="text" name="customerName" [(ngModel)]="customerName"
-        (ngModelChange)="onSearch()" placeholder="Search by name" />
-</nav>
-<button class="btn btn-info" (click)="allRecord()">Vehicle_Record</button> 
-<button class="btn btn-info"
-    (click)="onCreate()">Registration Form</button>
+    <nav class="navbar">
+        <input class="form-control mr-sm-2" type="text" name="customerName" [(ngModel)]="customerName"
+            (ngModelChange)="onSearch()" placeholder="Search by name" />
+    </nav>
+    <button class="btn btn-info" (click)="allRecord()">Vehicle_Record</button>
+    <button class="btn btn-info" (click)="onCreate()">Registration Form</button>
 </div>
 <table style="width: 100%">
     <thead>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { VehicleService, Vehicle, Model  } from '../vehicle.service';
+import { VehicleService, Vehicle, Model } from '../vehicle.service';
 
 @Component({
   selector: 'app-view-model',

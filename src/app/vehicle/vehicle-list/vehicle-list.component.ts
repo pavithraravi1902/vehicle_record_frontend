@@ -60,7 +60,7 @@ export class VehicleListComponent implements OnInit {
   onView(id: any) {
     this.router.navigateByUrl(`vehicle/${id}/show`);
   }
-  onBack(){
+  onBack() {
     this.router.navigateByUrl(`vehicle`);
   }
 }
